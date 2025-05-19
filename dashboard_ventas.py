@@ -4,12 +4,6 @@
 # In[1]:
 
 
-get_ipython().system('pip install streamlit pandas matplotlib seaborn')
-
-
-# In[2]:
-
-
 import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
