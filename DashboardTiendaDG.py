@@ -23,13 +23,20 @@ Una cadena de tiendas de conveniencia busca mejorar su estrategia de marketing a
 
 # Cargar datos
 @st.cache_data
-
-def load_data():
-    df = pd.read_csv(r"C:\Users\extiea\Downloads\data.csv")
+def load_data(uploaded_file):
+    df = pd.read_csv(uploaded_file)
     df['Date'] = pd.to_datetime(df['Date'])
     return df
 
-df = load_data()
+uploaded_file = st.file_uploader("📁 Subí el archivo data.csv", type="csv")
+
+if uploaded_file is not None:
+    df = load_data(uploaded_file)
+    # mostrar el dashboard si hay archivo
+    st.success("✅ Archivo cargado correctamente.")
+else:
+    st.warning("⚠️ Esperando que subas el archivo CSV.")
+    st.stop()
 
 # Sidebar: Filtros
 st.sidebar.header('🔍 Filtros')
